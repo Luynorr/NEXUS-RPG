@@ -47,8 +47,8 @@ void DragaoKaido::exibirEntradaCinematica() const {
     digitarTexto(Cor::AMARELO + "Rios de magma borbulhante cortam o chão de pedra negra ressecada.", 18);
     digitarTexto(Cor::AMARELO + "No topo de uma pilha de cinzas flamejantes, o colossal Dragão Kaido desperta!", 18);
     cout << endl;
-    digitarTexto(Cor::VERMELHO + Cor::NEGRITO + "Kaido: "Inseto audacioso... ousais adentrar meu domínio de fogo?", 22);
-    digitarTexto(Cor::VERMELHO + Cor::NEGRITO + "       Será reduzido à cinzas antes mesmo que tenhas a chance de suplicar por misericórdia, igual a muitos antes de ti!"", 22);
+    digitarTexto(Cor::VERMELHO + Cor::NEGRITO + "Kaido: \"Inseto audacioso... ousais adentrar meu domínio de fogo?\"", 22);
+    digitarTexto(Cor::VERMELHO + Cor::NEGRITO + "       Será reduzido à cinzas antes mesmo que tenhas a chance de suplicar por misericórdia, igual a muitos antes de ti!\"", 22);
     pausarParaContinuar();
 }
 
@@ -72,7 +72,7 @@ void DragaoKaido::executarTurnoIA(Personagem& alvo) {
         }
     } 
     else if (chance <= 90) { // 20% - Presença Aterradora
-        digitarTexto(Cor::VERMELHO + "Kaido: "Ajoelha-te perante o verdadeiro terror!"" + Cor::RESET, 18);
+        digitarTexto(Cor::VERMELHO + "Kaido: \"Ajoelha-te perante o verdadeiro terror!\"" + Cor::RESET, 18);
         cout << Cor::VERMELHO << "[O rugido do dragão paralisa teu sangue; teus músculos recusam-se a mover!]" << Cor::RESET << endl;
         if (testarAcerto(alvo.getResistencia())) {
             alvo.aplicarAtordoamento(1);
@@ -80,7 +80,7 @@ void DragaoKaido::executarTurnoIA(Personagem& alvo) {
         }
     } 
     else { // 10% - Cuspir Fogo
-        digitarTexto(Cor::VERMELHO + "Kaido: "Sinta o calor da aniquilação absoluta!"" + Cor::RESET, 18);
+        digitarTexto(Cor::VERMELHO + "Kaido: \"Sinta o calor da aniquilação absoluta!\"" + Cor::RESET, 18);
         cout << Cor::VERMELHO << "🔥 [Um jorro de chamas puras devora todo o campo de batalha!]" << Cor::RESET << endl;
         if (testarAcerto(alvo.getResistencia())) {
             int dano = gerarNumeroAleatorio(20, 28);
@@ -141,8 +141,8 @@ void NecromanteLich::exibirEntradaCinematica() const {
     digitarTexto(Cor::MAGENTA + "Névoa esverdeada rasteja pelo solo coberto por milhares de crânios estalados.", 18);
     digitarTexto(Cor::MAGENTA + "No centro da mesa de sacrifício, o Lich ergue seu cajado necrótico!", 18);
     cout << endl;
-    digitarTexto(Cor::MAGENTA + Cor::NEGRITO + "Lich: "Mais uma alma tola busca descansar nesta cidade decrépita?", 22);
-    digitarTexto(Cor::MAGENTA + Cor::NEGRITO + "       Excelente... teus ossos servirão bem ao meu exército de mortos!"", 22);
+    digitarTexto(Cor::MAGENTA + Cor::NEGRITO + "Lich: \"Mais uma alma tola busca descansar nesta cidade decrépita?\"", 22);
+    digitarTexto(Cor::MAGENTA + Cor::NEGRITO + "       Excelente... teus ossos servirão bem ao meu exército de mortos!\"", 22);
     pausarParaContinuar();
 }
 
@@ -158,7 +158,7 @@ const vector<Esqueleto*>& NecromanteLich::getCapangas() const {
 }
 
 void NecromanteLich::animarMortos() {
-    digitarTexto(Cor::MAGENTA + "Lich: "Ergam-se, meus preciosos mortos! Protejam o vosso mestre!"" + Cor::RESET, 18);
+    digitarTexto(Cor::MAGENTA + "Lich: \"Ergam-se, meus preciosos mortos! Protejam o vosso mestre!\"" + Cor::RESET, 18);
     cout << Cor::MAGENTA << "[Da terra seca, mãos esqueléticas emergem empunhando espadas enferrujadas!]" << Cor::RESET << endl;
     if (capangas.size() >= 4) {
         cout << Cor::CINZA << "  -> A arena já está no limite máximo de 4 Esqueletos!" << Cor::RESET << endl;
@@ -196,7 +196,7 @@ void NecromanteLich::executarTurnoIA(Personagem& alvo) {
         }
     } 
     else {
-        digitarTexto(Cor::MAGENTA + "Lich: "Todas as coisas precisam de um fim, e a morte leva tudo e todos!"" + Cor::RESET, 18);
+        digitarTexto(Cor::MAGENTA + "Lich: \"Todas as coisas precisam de um fim, e a morte leva tudo e todos!\"" + Cor::RESET, 18);
         cout << Cor::MAGENTA << "☠️ [Uma onda de energia pútrida se expande de seu cajado, definhando a vida!]" << Cor::RESET << endl;
         if (testarAcerto(alvo.getResistencia())) {
             int dano = gerarNumeroAleatorio(20, 28);
@@ -206,8 +206,7 @@ void NecromanteLich::executarTurnoIA(Personagem& alvo) {
 
     for (size_t i = 0; i < capangas.size(); i++) {
         if (capangas[i]->estaVivo() && alvo.estaVivo()) {
-            cout << "
-" << Cor::CINZA << "--- Turno do Capanga " << (i + 1) << " ---" << Cor::RESET << endl;
+            cout << "\n" << Cor::CINZA << "--- Turno do Capanga " << (i + 1) << " ---" << Cor::RESET << endl;
             capangas[i]->executarTurnoIA(alvo);
         }
     }
@@ -233,8 +232,8 @@ void AnjoCaidoBaal::exibirEntradaCinematica() const {
     digitarTexto(Cor::AMARELO + "Penas negras flutuam lentamente pelo ar estático da catedral dilapidada.", 18);
     digitarTexto(Cor::AMARELO + "No altar em ruínas, uma figura de beleza aterradora e asas de sombra desce!", 18);
     cout << endl;
-    digitarTexto(Cor::AMARELO + Cor::NEGRITO + "Baal: "Graça e julgamento são dois lados da mesma moeda.", 22);
-    digitarTexto(Cor::AMARELO + Cor::NEGRITO + "       Pensas que estás pronto para encarar a queda dos céus?"", 22);
+    digitarTexto(Cor::AMARELO + Cor::NEGRITO + "Baal: \"Graça e julgamento são dois lados da mesma moeda.\"", 22);
+    digitarTexto(Cor::AMARELO + Cor::NEGRITO + "       Pensas que estás pronto para encarar a queda dos céus?\"", 22);
     pausarParaContinuar();
 }
 
@@ -255,7 +254,7 @@ void AnjoCaidoBaal::executarTurnoIA(Personagem& alvo) {
         cout << Cor::VERDE << "[INIMIGO] Anjo Caído Baal canaliza TOQUE CURATIVO (+ " << cura << " PVs)!" << Cor::RESET << endl;
     } 
     else if (chance <= 90) {
-        digitarTexto(Cor::AMARELO + "Baal: "Contemple a imagem da qual foste privado..."" + Cor::RESET, 18);
+        digitarTexto(Cor::AMARELO + "Baal: \"Contemple a imagem da qual foste privado...\"" + Cor::RESET, 18);
         cout << Cor::AMARELO << "[A aura hipnótica do anjo perturba tua mente, enfraquecendo teus golpes!]" << Cor::RESET << endl;
         if (testarAcerto(alvo.getResistencia())) {
             alvo.aplicarModificadorAcerto(-3, 2);
@@ -263,7 +262,7 @@ void AnjoCaidoBaal::executarTurnoIA(Personagem& alvo) {
         }
     } 
     else {
-        digitarTexto(Cor::AMARELO + "Baal: "Ficaste cego de tanto enxergar?"" + Cor::RESET, 18);
+        digitarTexto(Cor::AMARELO + "Baal: \"Ficaste cego de tanto enxergar?\"" + Cor::RESET, 18);
         cout << Cor::AMARELO << "✨ [Um feixe de luz ofuscante corta os céus, incendiando o solo aos teus pés!]" << Cor::RESET << endl;
         if (testarAcerto(alvo.getResistencia())) {
             int dano = gerarNumeroAleatorio(20, 30);
@@ -292,8 +291,8 @@ void Gotwellenn::exibirEntradaCinematica() const {
     digitarTexto(Cor::AZUL + "O chão é feito de linhas puras de código e telas de compilação.", 18);
     digitarTexto(Cor::AZUL + "No trono central, envolto em uma névoa glacial, aguarda Gotwellenn!", 18);
     cout << endl;
-    digitarTexto(Cor::AZUL + Cor::NEGRITO + "Gotwellenn: "Chegaste longe, jovem aprendiz... mas a verdadeira prova final começa agora!"", 22);
-    digitarTexto(Cor::VERDE + Cor::NEGRITO + "Jogador:    "Enfrentei monstros e deuses para chegar até aqui. Nada vai me parar!"", 22);
+    digitarTexto(Cor::AZUL + Cor::NEGRITO + "Gotwellenn: \"Chegaste longe, jovem aprendiz... mas a verdadeira prova final começa agora!\"", 22);
+    digitarTexto(Cor::VERDE + Cor::NEGRITO + "Jogador:    \"Enfrentei monstros e deuses para chegar até aqui. Nada vai me parar!\"", 22);
     pausarParaContinuar();
 }
 
@@ -338,9 +337,9 @@ void WellingtonVerdadeiro::exibirEntradaCinematica() const {
     digitarTexto(Cor::VERMELHO + "A Cúpula treme enquanto o código do universo se reescreve!", 18);
     digitarTexto(Cor::VERMELHO + "Uma figura austera com o caderno de chamadas cintilando revela-se!", 18);
     cout << endl;
-    digitarTexto(Cor::VERMELHO + Cor::NEGRITO + "Wellington Verdadeiro: "Impressionante.", 22);
-    digitarTexto(Cor::VERMELHO + Cor::NEGRITO + "                       Mas será que seu código é limpo o suficiente para sobreviver ao meu compilador?!", 22);
-    digitarTexto(Cor::VERMELHO + Cor::NEGRITO + "                       Sinta o peso da orientação a objetos pura!"", 22);
+    digitarTexto(Cor::VERMELHO + Cor::NEGRITO + "Wellington Verdadeiro: \"Impressionante.\"", 22);
+    digitarTexto(Cor::VERMELHO + Cor::NEGRITO + "                       Mas será que seu código é limpo o suficiente para sobreviver ao meu compilador?!\"", 22);
+    digitarTexto(Cor::VERMELHO + Cor::NEGRITO + "                       Sinta o peso da orientação a objetos pura!\"", 22);
     pausarParaContinuar();
 }
 
@@ -370,7 +369,7 @@ void WellingtonVerdadeiro::executarTurnoIA(Personagem& alvo) {
     int chance = gerarNumeroAleatorio(1, 100);
 
     if (chance <= 40) {
-        digitarTexto(Cor::VERMELHO + "Wellington: "Sinta o impacto do Gancho Astral!"" + Cor::RESET, 18);
+        digitarTexto(Cor::VERMELHO + "Wellington: \"Sinta o impacto do Gancho Astral!\"" + Cor::RESET, 18);
         cout << Cor::VERMELHO << "[CHEFE FINAL] Wellington Verdadeiro desfere GANCHO ASTRAL!" << Cor::RESET << endl;
         if (testarAcerto(alvo.getDefesaEfetiva())) {
             int dano = gerarNumeroAleatorio(16, 26) + getDanoBonusAscensao();
@@ -378,7 +377,7 @@ void WellingtonVerdadeiro::executarTurnoIA(Personagem& alvo) {
         }
     } 
     else if (chance <= 70) {
-        digitarTexto(Cor::VERMELHO + "Wellington Verdadeiro: "Hora de checar as faltas! Aluno ausente não ganha nota!"" + Cor::RESET, 18);
+        digitarTexto(Cor::VERMELHO + "Wellington Verdadeiro: \"Hora de checar as faltas! Aluno ausente não ganha nota!\"" + Cor::RESET, 18);
         cout << Cor::VERMELHO << "(Uma lista arcana surge no ar, reduzindo a tua presença em combate!)" << Cor::RESET << endl;
         if (testarAcerto(alvo.getResistencia())) {
             int dano = gerarNumeroAleatorio(12, 18) + getDanoBonusAscensao();
@@ -388,7 +387,7 @@ void WellingtonVerdadeiro::executarTurnoIA(Personagem& alvo) {
         }
     } 
     else if (chance <= 90) {
-        digitarTexto(Cor::VERMELHO + "Wellington Verdadeiro: "Seu programa falhou com o erro de Segment Fault!"" + Cor::RESET, 18);
+        digitarTexto(Cor::VERMELHO + "Wellington Verdadeiro: \"Seu programa falhou com o erro de Segment Fault!\"" + Cor::RESET, 18);
         cout << Cor::VERMELHO << "🌋 (Uma cascata ininterrupta de gelo e dados colide contra sua estrutura!)" << Cor::RESET << endl;
         if (testarAcerto(alvo.getResistencia())) {
             int dano = gerarNumeroAleatorio(28, 40) + getDanoBonusAscensao();
@@ -397,7 +396,7 @@ void WellingtonVerdadeiro::executarTurnoIA(Personagem& alvo) {
     } 
     else {
         turnosAscensao = 2;
-        digitarTexto(Cor::AMARELO + "Wellington: "Ativando protocolo de Ascensão do Alpinista!"" + Cor::RESET, 18);
+        digitarTexto(Cor::AMARELO + "Wellington: \"Ativando protocolo de Ascensão do Alpinista!\"" + Cor::RESET, 18);
         cout << Cor::AMARELO << "🧗 [CHEFE FINAL] Wellington Verdadeiro ativa ASCENSÃO DO ALPINISTA!" << Cor::RESET << endl;
         cout << Cor::AMARELO << "  -> Wellington ganhou +5 em Defesa, Resistência e Dano pelos próximos 2 turnos!" << Cor::RESET << endl;
     }
